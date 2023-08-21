@@ -33,11 +33,11 @@ go get github.com/cubexai/cubexai-sdk-go
 
 3.消息获取接口有一个`status`字段，此字段的值枚举有3种情况：
 
-    * `RUN` 代表AI正在回复内容，此种情况需要继续轮询消息查询接口。
+* `RUN` 代表AI正在回复内容，此种情况需要继续轮询消息查询接口。
 
-    * `LENGTH` 代表内容超过长度，需要回复【继续】指令以继续生成。
+* `LENGTH` 代表内容超过长度，需要回复【继续】指令以继续生成。
 
-    * `END` 为输出结束，调用端应停止轮询请求。
+* `END` 为输出结束，调用端应停止轮询请求。
 	
 4.消息内容在`status`状态变成`LENGTH`或`END`后，保留1分钟，请及时获取消息内容并做好缓存或落库。
 
@@ -50,8 +50,10 @@ import (
 )
 
 func main() {
-	appid := "6WAz************************0eL"
-	secret := "Nuf*************************h9Y"
+	appid := "6WAz************************0eL"   // 官网获得的APIKEY
+	secret := "Nuf*************************h9Y"  // 官网获得的APISecret
+
+	// 以下调用方式为快速跑通Demo，可以根据实际情况自行修改
 
 	QueryMessage(appid, secret, "b8c24e81-cdcb-4aae-a7cf-abcdefg")
 	SendMessage(appid, secret, "你好啊")
@@ -60,15 +62,22 @@ func main() {
 // 接收消息
 func QueryMessage(appid, secret, aid string) {
 
+	// 使用内置结构体构造请求参数
 	params := utils.CubeXAIMessageRequestBody{
 		Aid: aid,
 	}
 
+	// API接口URL
 	api := "https://chat.airb3.cn/api/v1/openapi/chat/query"
 
+	// 传递ak实例化一个客户端
+	// 内置客户端实例提供了计算签名的方法，不用手动计算签名
 	client := utils.NewHttpClient(appid, secret)
 
+	// 使用初始化过的实例调用DoGet方法
 	result, _err := client.DoGet(api, params)
+
+	// 返回的是[]byte，需要配合结构体解构使用
 	fmt.Println(string(result), _err)
 }
 
@@ -97,6 +106,8 @@ func SendMessage(appid, secret, content string) {
 ##### 1.4 参数结构
 
 ###### 1.4.1 请求参数结构
+
+以下内容仅作简单说明，详细解释清移步 [API文档](https://apifox.com/apidoc/shared-c2de4a48-bf44-4a6c-aacc-554885ac180e)。
 
 * 请求头
 
@@ -174,7 +185,7 @@ type CubeXAIMessageResponse struct {
 
 #### 1.5 签名认证
 
-**温馨提示：** sdk已经内置签名认证方法，可以调用sdk的`doGet`或者`doPost`方法发起请求，可一步到位。
+**温馨提示：** sdk已经内置签名认证方法，可以调用sdk的`doGet`或者`doPost`方法发起请求，可免计算签名一步到位。
 
 为了确保API请求的安全性，我们实施了一种基于HMAC的请求签名机制。每个API请求都需要包含以下几个HTTP头部字段：`X-APPID`，`X-TIMESTAMP`，`X-NONCE`，和`X-SIGNATURE`。
 
