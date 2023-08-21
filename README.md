@@ -1,6 +1,6 @@
 # CubeX AI Go语言SDK
 
-基于Go语言开发，只需要一行代码，只用强大的AI能力。
+本sdk基于Go语言开发，只需要一行代码，依托GPT大模型强悍的自然语言处理技术，可快速获得强大的AI能力。
 
 👉 CubeX AI: [CubeX AI官网](https://www.airb3.com.cn/?ref=github)
 
