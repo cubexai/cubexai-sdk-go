@@ -1,16 +1,14 @@
 # CubeX AI Go语言SDK
 
----
-
 基于Go语言开发，只需要一行代码，只用强大的AI能力。
 
 👉 CubeX AI: [CubeX AI官网](https://www.airb3.com.cn/?ref=github)
+
 👉 API文档：[API文档](https://apifox.com/apidoc/shared-c2de4a48-bf44-4a6c-aacc-554885ac180e)
+
 👉 官方公众号：CubeX AI
 
 <img src="./images/so.png" />
-
----
 
 #### 前置准备
 * 官网申请APIkey和APISecret
