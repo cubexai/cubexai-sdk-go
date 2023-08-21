@@ -17,27 +17,27 @@ type CubeXAICompletionRequestBodyMessages struct {
 	Content string `json:"content"`
 }
 
-type CubeXAICompletionResponse struct {
-	Code    uint64                        `json:"code"`
-	Message string                        `json:"message"`
-	Data    CubeXAICompletionResponseBody `json:"data"`
-}
-
 type CubeXAICompletionResponseBody struct {
+	Code    uint64                            `json:"code"`
+	Message string                            `json:"message"`
+	Data    CubeXAICompletionResponseBodyData `json:"data"`
+}
+
+type CubeXAICompletionResponseBodyData struct {
 	Aid string `json:"aid"`
 }
 
-type CubeXAIMessageRequest struct {
+type CubeXAIMessageRequestBody struct {
 	Aid string `json:"aid"`
-}
-
-type CubeXAIMessageResponse struct {
-	Code    uint64                     `json:"code"`
-	Message string                     `json:"message"`
-	Data    CubeXAIMessageResponseBody `json:"data"`
 }
 
 type CubeXAIMessageResponseBody struct {
+	Code    uint64                         `json:"code"`
+	Message string                         `json:"message"`
+	Data    CubeXAIMessageResponseBodyData `json:"data"`
+}
+
+type CubeXAIMessageResponseBodyData struct {
 	Role     string `json:"role"`
 	Content  string `json:"content"`
 	Balance  uint64 `json:"balance"`

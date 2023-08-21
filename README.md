@@ -37,7 +37,7 @@ go get github.com/cubexai/cubexai-sdk-go
 package main
 
 import (
-	"github.com/cubexai-sdk-go/utils"
+	"github.com/cubexai/cubexai-sdk-go/utils"
 	"fmt"
 )
 
@@ -52,7 +52,7 @@ func main() {
 // 接收消息
 func QueryMessage(appid, secret, aid string) {
 
-	params := utils.CubeXAIMessageRequest{
+	params := utils.CubeXAIMessageRequestBody{
 		Aid: aid,
 	}
 
@@ -90,6 +90,17 @@ func SendMessage(appid, secret, content string) {
 
 ###### 1.4.1 请求参数结构
 
+* 请求头
+
+```
+type CubeXAIRequestHeader struct {
+	XAppId     string `json:"x-appid"`
+	XTimestamp string `json:"x-timestamp"`
+	XSignature string `json:"x-signature"`
+	XNonce     string `json:"x-nonce"`
+}
+```
+
 * Completion接口
     * ModelId 模型ID，需要在官网已有的模型中查询
     * Messages 消息内容数组，可以携带多条历史记录，最新的消息放到最后。
@@ -105,14 +116,39 @@ type CubeXAICompletionRequestBodyMessages struct {
 	Role    string `json:"role"`
 	Content string `json:"content"`
 }
+
+type CubeXAICompletionResponseBody struct {
+	Code    uint64                            `json:"code"`
+	Message string                            `json:"message"`
+	Data    CubeXAICompletionResponseBodyData `json:"data"`
+}
+
+type CubeXAICompletionResponseBodyData struct {
+	Aid string `json:"aid"`
+}
 ```
 
 * QueryMessage接口
     * Aid 消息ID
 ```
-type CubeXAIMessageRequest struct {
+type CubeXAIMessageRequestBody struct {
 	Aid string `json:"aid"`
 }
+
+type CubeXAIMessageResponseBody struct {
+	Code    uint64                         `json:"code"`
+	Message string                         `json:"message"`
+	Data    CubeXAIMessageResponseBodyData `json:"data"`
+}
+
+type CubeXAIMessageResponseBodyData struct {
+	Role     string `json:"role"`
+	Content  string `json:"content"`
+	Balance  uint64 `json:"balance"`
+	Quantity uint64 `json:"quantity"`
+	Status   string `json:"status"`
+}
+
 ```
 
 ###### 1.4.2 响应参数结构

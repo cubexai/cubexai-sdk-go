@@ -16,7 +16,7 @@ func main() {
 // 接收消息
 func QueryMessage(appid, secret, aid string) {
 
-	params := utils.CubeXAIMessageRequest{
+	params := utils.CubeXAIMessageRequestBody{
 		Aid: aid,
 	}
 
