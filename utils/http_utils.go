@@ -141,7 +141,7 @@ func (h *HttpClient) DoPost(api string, body interface{}) (result []byte, err er
 func (h *HttpClient) generateSign(data interface{}) error {
 
 	uSignature := StructOrMapToSortedString(data)
-	fmt.Println(uSignature)
+
 	h.Header.XAppId = h.AppId
 	h.Header.XTimestamp = strconv.FormatInt(time.Now().Unix(), 10)
 	h.Header.XNonce = GenerateRandomString(18)
