@@ -8,8 +8,10 @@ type CubeXAIRequestHeader struct {
 }
 
 type CubeXAICompletionRequestBody struct {
-	ModelId  string                                 `json:"mid"`
-	Messages []CubeXAICompletionRequestBodyMessages `json:"messages"`
+	ModelId      string                                 `json:"mid"`
+	Messages     []CubeXAICompletionRequestBodyMessages `json:"messages"`
+	ModelType    string                                 `json:"model_type"`
+	ModelVersion string                                 `json:"model_version"`
 }
 
 type CubeXAICompletionRequestBodyMessages struct {
