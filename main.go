@@ -1,8 +1,9 @@
 package main
 
 import (
-	"cubexai-sdk-go/utils"
 	"fmt"
+
+	"github.com/cubexai/cubexai-sdk-go/utils"
 )
 
 func main() {
