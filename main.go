@@ -40,6 +40,8 @@ func SendMessage(appid, secret, content string) {
 				Content: content,
 			},
 		},
+		ModelType:    "gpt-35",
+		ModelVersion: "",
 	}
 
 	api := "https://chat.airb3.cn/api/v1/openapi/chat/completions"

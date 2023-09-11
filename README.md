@@ -87,6 +87,8 @@ func SendMessage(appid, secret, content string) {
 				Content: content,
 			},
 		},
+		ModelType:    "gpt-35",
+		ModelVersion: "",
 	}
 
 	api := "https://chat.airb3.cn/api/v1/openapi/chat/completions"
@@ -120,10 +122,14 @@ type CubeXAIRequestHeader struct {
     * Messages 消息内容数组，可以携带多条历史记录，最新的消息放到最后。
         * -Messages.Role 可选值有`system`,`assistant`,`user`
         * -Messages.Content 消息内容正文
+	* ModelType:  模型类型，默认gpt-3.5-turbo,
+	* ModelVersion 模型版本，可为空
 ```
 type CubeXAICompletionRequestBody struct {
 	ModelId  string                                 `json:"mid"`
 	Messages []CubeXAICompletionRequestBodyMessages `json:"messages"`
+	ModelType:    "gpt-35",
+	ModelVersion: "",
 }
 
 type CubeXAICompletionRequestBodyMessages struct {
