@@ -1,3 +1,3 @@
-module cubexai-sdk-go
+module github.com/cubexai/cubexai-sdk-go
 
 go 1.20
