@@ -12,6 +12,10 @@ type CubeXAICompletionRequestBody struct {
 	Messages     []CubeXAICompletionRequestBodyMessages `json:"messages"`
 	ModelType    string                                 `json:"model_type"`
 	ModelVersion string                                 `json:"model_version"`
+	OpenId       string                                 `json:"open_id"`
+	AppId        string                                 `json:"app_id"`
+	X            uint64                                 `json:"x"`
+	Y            uint64                                 `json:"y"`
 }
 
 type CubeXAICompletionRequestBodyMessages struct {
@@ -19,27 +23,27 @@ type CubeXAICompletionRequestBodyMessages struct {
 	Content string `json:"content"`
 }
 
+type CubeXAICompletionResponse struct {
+	Code    uint64                        `json:"code"`
+	Message string                        `json:"message"`
+	Data    CubeXAICompletionResponseBody `json:"data"`
+}
+
 type CubeXAICompletionResponseBody struct {
-	Code    uint64                            `json:"code"`
-	Message string                            `json:"message"`
-	Data    CubeXAICompletionResponseBodyData `json:"data"`
-}
-
-type CubeXAICompletionResponseBodyData struct {
 	Aid string `json:"aid"`
 }
 
-type CubeXAIMessageRequestBody struct {
+type CubeXAIMessageRequest struct {
 	Aid string `json:"aid"`
+}
+
+type CubeXAIMessageResponse struct {
+	Code    uint64                     `json:"code"`
+	Message string                     `json:"message"`
+	Data    CubeXAIMessageResponseBody `json:"data"`
 }
 
 type CubeXAIMessageResponseBody struct {
-	Code    uint64                         `json:"code"`
-	Message string                         `json:"message"`
-	Data    CubeXAIMessageResponseBodyData `json:"data"`
-}
-
-type CubeXAIMessageResponseBodyData struct {
 	Role     string `json:"role"`
 	Content  string `json:"content"`
 	Balance  uint64 `json:"balance"`
