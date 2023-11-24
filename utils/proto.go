@@ -50,3 +50,7 @@ type CubeXAIMessageResponseBody struct {
 	Quantity uint64 `json:"quantity"`
 	Status   string `json:"status"`
 }
+
+type EmbeddingParams struct {
+	Input string `json:"input" form:"input" binding:"required"`
+}
